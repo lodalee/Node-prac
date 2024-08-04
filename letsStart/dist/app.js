@@ -8,15 +8,43 @@ app.use(function (req, res, next) {
     console.log("this is logging middleware");
     next();
 });
-app.get("/", function (req, res) {
-    console.log(req);
-    res.send({ cats: app_model_1.Cat });
+app.get("/cats", function (req, res) {
+    try {
+        var cats = app_model_1.Cat;
+        res.status(200).send({
+            success: true,
+            data: {
+                cats: cats,
+            },
+        });
+    }
+    catch (error) {
+        res.status(400).send({
+            success: false,
+            error: error.message,
+        });
+    }
 });
-app.get("/cats/a", function (req, res) {
-    res.send({ a: app_model_1.Cat[0] });
-});
-app.get("/cats/d", function (req, res) {
-    res.send({ d: app_model_1.Cat[3] });
+app.get("/cats/:id", function (req, res) {
+    try {
+        var params_1 = req.params;
+        console.log(params_1);
+        var cats = app_model_1.Cat.find(function (cat) {
+            return cat.id === params_1.id;
+        });
+        res.status(200).send({
+            success: true,
+            data: {
+                cats: cats,
+            },
+        });
+    }
+    catch (error) {
+        res.status(400).send({
+            success: false,
+            error: error.message,
+        });
+    }
 });
 app.use(function (req, res, next) {
     console.log("this is error middleware");

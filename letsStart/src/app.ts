@@ -1,6 +1,7 @@
+//** Create Read */
+
 import * as express from "express";
-import { Cat, CatType } from "./app.model";
-import { error } from "console";
+import catsRouter from './cats/cats.route'
 
 const app: express.Express = express();
 
@@ -13,6 +14,7 @@ app.use((req, res, next) => {
 
 //* json middleware
 app.use(express.json());
+app.use(catsRouter);
 
 //* READ 고양이 전체 데이터 조회
 app.get('/cats', (req, res) =>{

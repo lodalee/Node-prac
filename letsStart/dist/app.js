@@ -8,14 +8,14 @@ app.use(function (req, res, next) {
     console.log("this is logging middleware");
     next();
 });
-app.get("/cats", function (req, res) {
+app.get('/cats', function (req, res) {
     try {
         var cats = app_model_1.Cat;
         res.status(200).send({
             success: true,
             data: {
                 cats: cats,
-            },
+            }
         });
     }
     catch (error) {
@@ -25,18 +25,17 @@ app.get("/cats", function (req, res) {
         });
     }
 });
-app.get("/cats/:id", function (req, res) {
+app.get('/cat/:id', function (req, res) {
     try {
         var params_1 = req.params;
-        console.log(params_1);
-        var cats = app_model_1.Cat.find(function (cat) {
+        var cat = app_model_1.Cat.find(function (cat) {
             return cat.id === params_1.id;
         });
         res.status(200).send({
             success: true,
             data: {
-                cats: cats,
-            },
+                cat: cat,
+            }
         });
     }
     catch (error) {

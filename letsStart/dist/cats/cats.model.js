@@ -1,57 +1,46 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var cats_model_1 = require("./cats.model");
-app.get('/cats', function (req, res) {
-    try {
-        var cats = cats_model_1.Cat;
-        res.status(200).send({
-            success: true,
-            data: {
-                cats: cats,
-            }
-        });
-    }
-    catch (error) {
-        res.status(400).send({
-            success: false,
-            error: error.message,
-        });
-    }
-});
-app.get('/cat/:id', function (req, res) {
-    try {
-        var params_1 = req.params;
-        var cat = cats_model_1.Cat.find(function (cat) {
-            return cat.id === params_1.id;
-        });
-        res.status(200).send({
-            success: true,
-            data: {
-                cat: cat,
-            }
-        });
-    }
-    catch (error) {
-        res.status(400).send({
-            success: false,
-            error: error.message,
-        });
-    }
-});
-app.post('/cats', function (req, res) {
-    try {
-        var data = req.body;
-        cats_model_1.Cat.push(data);
-        res.status(200).send({
-            success: true,
-            data: { data: data }
-        });
-    }
-    catch (error) {
-        res.status(400).send({
-            success: false,
-            error: error.message,
-        });
-    }
-});
+exports.Cat = void 0;
+exports.Cat = [
+    {
+        id: 'fsduifh',
+        name: 'blue',
+        age: 8,
+        species: 'Russian Blue',
+        isCute: true,
+        friends: ['asdfhj29009', 'WE09tju2j'],
+    },
+    {
+        id: 'iohf2309q4hr',
+        name: 'som',
+        age: 4,
+        species: 'Sphynx cat',
+        isCute: true,
+        friends: ['weju0fj20qj', 'asdfhj29009', 'weju0fj20qj'],
+    },
+    {
+        id: 'WE09tju2j',
+        name: 'lean',
+        age: 6,
+        species: 'Munchkin',
+        isCute: false,
+        friends: [],
+    },
+    {
+        id: 'asdfhj29009',
+        name: 'star',
+        age: 10,
+        species: 'Scottish Fold',
+        isCute: true,
+        friends: ['weju0fj20qj'],
+    },
+    {
+        id: 'weju0fj20qj',
+        name: 'red',
+        age: 2,
+        species: 'Sharm',
+        isCute: false,
+        friends: [],
+    },
+];
 //# sourceMappingURL=cats.model.js.map
